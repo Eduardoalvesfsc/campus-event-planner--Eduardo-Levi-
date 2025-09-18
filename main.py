@@ -13,3 +13,14 @@ def validarData(dataStr):
         return True
     except ValueError:
         return False
+    
+# Função para adicionar evento
+def adicionarEvento(listaEventos, nome, data, local, categoria):
+     """
+    Cria um novo evento (dicionário) e adiciona na lista de eventos.
+    Valída a data e se os campos não estão vazios.
+    """
+     # Verifica se todos os campos foram preenchidos
+     if not nome or not data or not local or not categoria:
+         print("❌ Erro: Todos os campos são obrigatórios")
+         return
