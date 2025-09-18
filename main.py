@@ -24,3 +24,8 @@ def adicionarEvento(listaEventos, nome, data, local, categoria):
      if not nome or not data or not local or not categoria:
          print("❌ Erro: Todos os campos são obrigatórios")
          return
+     
+     # Valída a data
+     if not validarData(data):
+         print("❌ Erro: Data invalida! Use o formato AAAA-MM-DD")
+         return
