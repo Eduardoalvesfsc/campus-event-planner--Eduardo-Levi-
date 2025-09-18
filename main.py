@@ -29,3 +29,8 @@ def adicionarEvento(listaEventos, nome, data, local, categoria):
      if not validarData(data):
          print("❌ Erro: Data invalida! Use o formato AAAA-MM-DD")
          return
+    
+     # Gera um ID único
+     novoId = len(listaEventos) + 1
+
+     #
