@@ -33,4 +33,12 @@ def adicionarEvento(listaEventos, nome, data, local, categoria):
      # Gera um ID único
      novoId = len(listaEventos) + 1
 
-     #
+     # Cria o dicionario do evento
+     evento = {
+         "id": novoId,
+         "nome": nome,
+         "data": data,
+         "local": local,
+         "categoria": categoria, 
+         "participado": False
+     }
