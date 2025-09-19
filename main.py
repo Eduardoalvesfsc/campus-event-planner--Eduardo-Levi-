@@ -42,3 +42,6 @@ def adicionarEvento(listaEventos, nome, data, local, categoria):
          "categoria": categoria, 
          "participado": False
      }
+
+     # Adiciona na lista
+     listaEventos.append()
