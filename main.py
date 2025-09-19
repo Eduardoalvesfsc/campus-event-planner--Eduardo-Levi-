@@ -44,4 +44,18 @@ def adicionarEvento(listaEventos, nome, data, local, categoria):
      }
 
      # Adiciona na lista
-     listaEventos.append()
+     listaEventos.append(evento)
+     print(f"✅ Evento '{nome}' adicionado com sucesso!")
+
+# Função para listar todos os eventos
+def listarEventos(listaEventos):
+    """
+    Mostra todos os eventos cadastrados na lista.
+    """
+    if not listaEventos:
+        print("📭 Nenhum evento cadastrado.")
+        return
+    
+    print("\n--- LISTA DE EVENTOS ---")
+    for evento in listaEventos:
+        print(f"ID: {evento['id']} | Nome: {evento ['nome']} | Data: {evento['data']} | Local: {evento['local']} | Categoria: {evento['categoria']} | Participado: {evento['participado']}")
