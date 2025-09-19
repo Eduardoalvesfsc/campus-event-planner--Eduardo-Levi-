@@ -29,3 +29,33 @@ def adicionarEvento(listaEventos, nome, data, local, categoria):
      if not validarData(data):
          print("❌ Erro: Data invalida! Use o formato AAAA-MM-DD")
          return
+    
+     # Gera um ID único
+     novoId = len(listaEventos) + 1
+
+     # Cria o dicionario do evento
+     evento = {
+         "id": novoId,
+         "nome": nome,
+         "data": data,
+         "local": local,
+         "categoria": categoria, 
+         "participado": False
+     }
+
+     # Adiciona na lista
+     listaEventos.append(evento)
+     print(f"✅ Evento '{nome}' adicionado com sucesso!")
+
+# Função para listar todos os eventos
+def listarEventos(listaEventos):
+    """
+    Mostra todos os eventos cadastrados na lista.
+    """
+    if not listaEventos:
+        print("📭 Nenhum evento cadastrado.")
+        return
+    
+    print("\n--- LISTA DE EVENTOS ---")
+    for evento in listaEventos:
+        print(f"ID: {evento['id']} | Nome: {evento ['nome']} | Data: {evento['data']} | Local: {evento['local']} | Categoria: {evento['categoria']} | Participado: {evento['participado']}")
