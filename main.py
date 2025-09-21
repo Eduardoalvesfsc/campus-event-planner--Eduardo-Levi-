@@ -1,7 +1,4 @@
-from datetime import datetime
-# Planejador de Eventos do IFConecta
-# modelo de dados do evento (dicionário)
-
+from models.Menu import Menu
 # Função para validar a data
 def validarData(dataStr):
     """
@@ -92,3 +89,7 @@ def deletarEvento(listaEventos, id):
             print(f"🗑 Evento '{ev['nome']}' removido com sucesso!")
         return
     print("❌ Evento não encontrado.")
+
+if __name__ == '__main__':
+    menu = Menu()
+    menu.iniciar()
