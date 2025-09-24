@@ -75,7 +75,11 @@ Developed by: Eduardo and Levi
             id_evento = int(input("Digite o ID do evento para marcar como participado: "))
             planejador.marcar_evento_como_participado(id_evento)
         except ValueError:
-            print("ID invalido, digite um numero.")    
+            print("ID invalido, digite um numero.")
+            
+    def __gerar_relatorio(self, planejador: PlanejadorEventos):
+        print(self._display_title(" Relatório dos Eventos ") + "\n")
+        planejador.gerar_relatorio()    
     
     def iniciar(self):
         planejador = PlanejadorEventos()
@@ -96,6 +100,8 @@ Developed by: Eduardo and Levi
                 self.__filtrar_eventos(planejador)
             elif escolha == 4:
                 self.__marcar_participado(planejador)
+            elif escolha == 5:
+                self.__gerar_relatorio(planejador)
             elif escolha == 7:
                 self.__deletar_evento(planejador)
             elif escolha == 0:

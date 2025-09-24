@@ -60,4 +60,13 @@ class PlanejadorEventos:
                 print(f"✅ Evento '{evento.nome}' marcado como participado!\n")
                 return
         print(f"❌ Evento com ID {id_evento} nao encontrado.\n")
+        
+    def gerar_relatorio(self):
+        total_eventos = len(self.lista_eventos)
+        participados = sum(1 for evento in self.lista_eventos if evento.participado)
+        nao_participados = total_eventos - participados
+        
+        print(f"Total de eventos: {total_eventos}")
+        print(f"Eventos participados: {participados}")
+        print(f"Eventos pendentes: {nao_participados}\n")
     
