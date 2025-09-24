@@ -52,3 +52,12 @@ class PlanejadorEventos:
             for evento in eventos_encontrados:
                 print(evento)
             print("")
+    
+    def marcar_evento_como_participado(self, id_evento):
+        for evento in self.lista_eventos:
+            if evento.id == id_evento:
+                evento.participado = True
+                print(f"✅ Evento '{evento.nome}' marcado como participado!\n")
+                return
+        print(f"❌ Evento com ID {id_evento} nao encontrado.\n")
+    

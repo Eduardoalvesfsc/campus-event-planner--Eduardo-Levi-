@@ -69,6 +69,14 @@ Developed by: Eduardo and Levi
         categoria = input("Digite a categoria para filtrar: ")
         planejador.filtrar_eventos_por_categoria(categoria)
         
+    def __marcar_participado(self, planejador: PlanejadorEventos):
+        print(self._display_title(" Marcar Evento como Participado ") + "\n")
+        try:
+            id_evento = int(input("Digite o ID do evento para marcar como participado: "))
+            planejador.marcar_evento_como_participado(id_evento)
+        except ValueError:
+            print("ID invalido, digite um numero.")    
+    
     def iniciar(self):
         planejador = PlanejadorEventos()
         self._display_header()
@@ -86,6 +94,8 @@ Developed by: Eduardo and Levi
                 self.__listar_eventos(planejador)
             elif escolha == 3:
                 self.__filtrar_eventos(planejador)
+            elif escolha == 4:
+                self.__marcar_participado(planejador)
             elif escolha == 7:
                 self.__deletar_evento(planejador)
             elif escolha == 0:
