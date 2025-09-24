@@ -69,4 +69,13 @@ class PlanejadorEventos:
         print(f"Total de eventos: {total_eventos}")
         print(f"Eventos participados: {participados}")
         print(f"Eventos pendentes: {nao_participados}\n")
+        
+    def procurar_evento_por_nome(self, nome):
+        eventos_encontrados = [evento for evento in self.lista_eventos if nome.lower() in evento.nome.lower()]
+        if not eventos_encontrados:
+            print(f"🔎 Nenhum evento encontrado com o nome '{nome}'.\n")
+        else:
+            print("\n"+ f" EVENTOS ENCONTRADOS COM O NOME '{nome}' ".center(70, "-")+"\n")
+            for evento in eventos_encontrados:
+                print(evento)
     
