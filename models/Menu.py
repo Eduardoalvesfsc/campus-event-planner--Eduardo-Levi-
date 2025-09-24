@@ -63,11 +63,18 @@ Developed by: Eduardo and Levi
             planejador.deletar_evento(id_evento)
         except ValueError:
             print("ID invalido, digite um numero.")
+            
+    def __filtrar_eventos(self, planejador: PlanejadorEventos):
+        print(self._display_title(" Filtrar Eventos ") + "\n")
+        categoria = input("Digite a categoria para filtrar: ")
+        planejador.filtrar_eventos_por_categoria(categoria)
         
     def iniciar(self):
         planejador = PlanejadorEventos()
         self._display_header()
         planejador.adicionar_evento("Campus Party", "22/12/2026", "Arena BRB", "Tecnologia")
+        planejador.adicionar_evento("Campus Party", "22/12/2026", "Arena BRB", "Tecnologia")
+        planejador.adicionar_evento("Campus Party", "22/12/2026", "Arena BRB", "Cultura")
         
         while True:
             self._display_menu()
@@ -77,6 +84,8 @@ Developed by: Eduardo and Levi
                 self.__cadastrar_evento(planejador)
             elif escolha == 2:
                 self.__listar_eventos(planejador)
+            elif escolha == 3:
+                self.__filtrar_eventos(planejador)
             elif escolha == 7:
                 self.__deletar_evento(planejador)
             elif escolha == 0:

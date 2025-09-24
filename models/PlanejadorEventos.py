@@ -42,3 +42,13 @@ class PlanejadorEventos:
                 print(f"🗑 Evento '{evento.nome}' removido com sucesso!\n")
                 return
         print("❌ Evento nao encontrado.\n")
+        
+    def filtrar_eventos_por_categoria(self, categoria):
+        eventos_encontrados = [evento for evento in self.lista_eventos if evento.categoria.lower() == categoria.lower()]
+        if not eventos_encontrados:
+            print(f"🔎 Nenhum evento encontrado na categoria '{categoria}'.")
+        else:
+            print("\n"+ f" EVENTOS NA CATEGORIA '{categoria}' ".center(70, "-")+"\n")
+            for evento in eventos_encontrados:
+                print(evento)
+            print("")
