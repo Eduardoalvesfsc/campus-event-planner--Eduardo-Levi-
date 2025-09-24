@@ -14,6 +14,7 @@ class Menu:
             "3. Filtrar Eventos por Categoria",
             "4. Marcar Evento como Participado",
             "5. Gerar Relatório",
+            "7. Deletar Evento por ID",
             "0. Sair"
         ]
 
@@ -46,7 +47,7 @@ Developed by: Eduardo and Levi
     def __cadastrar_evento(self, planejador: PlanejadorEventos):
         print(self._display_title(" Adicionar Evento ") + "\n")
         nome = input("Nome do Evento: ")
-        data = input("Data (AAAA-MM-DD): ")
+        data = input("Data (DD/MM/AAAA): ")
         local = input("Local: ")
         categoria = input("Categoria: ")
         planejador.adicionar_evento(nome, data, local, categoria)
@@ -55,9 +56,18 @@ Developed by: Eduardo and Levi
         print(self._display_title(" Listar Eventos ") + "\n")
         planejador.listar_eventos()
         
+    def __deletar_evento(self, planejador: PlanejadorEventos):
+        print(self._display_title(" Deletar Evento ") + "\n")
+        try:
+            id_evento = int(input("Digite o ID do evento para deletar: "))
+            planejador.deletar_evento(id_evento)
+        except ValueError:
+            print("ID invalido, digite um numero.")
+        
     def iniciar(self):
         planejador = PlanejadorEventos()
         self._display_header()
+        planejador.adicionar_evento("Campus Party", "22/12/2026", "Arena BRB", "Tecnologia")
         
         while True:
             self._display_menu()
@@ -67,6 +77,8 @@ Developed by: Eduardo and Levi
                 self.__cadastrar_evento(planejador)
             elif escolha == 2:
                 self.__listar_eventos(planejador)
+            elif escolha == 7:
+                self.__deletar_evento(planejador)
             elif escolha == 0:
                 print("Saindo do Planejador de Eventos. Até logo!")
                 break

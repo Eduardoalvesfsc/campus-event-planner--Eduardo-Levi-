@@ -8,7 +8,7 @@ class PlanejadorEventos:
 
     def _validar_data(self, data_str) -> bool:
         try:
-            datetime.strptime(data_str, "%Y-%m-%d")
+            datetime.strptime(data_str, "%d/%m/%Y")
             return True
         except ValueError:
             return False
@@ -19,7 +19,7 @@ class PlanejadorEventos:
             return
 
         if not self._validar_data(data):
-            print(f"❌ Erro: Data invalida! Use o formato AAAA-MM-DD\n")
+            print(f"❌ Erro: Data invalida! Use o formato DD/MM/AAAA\n")
             return
 
         novo_evento = Evento(self._proximo_id, nome, data, local, categoria)
@@ -32,6 +32,13 @@ class PlanejadorEventos:
             print(f"📭 Nenhum evento cadastrado.\n")
             return
 
-        print("\n--- LISTA DE EVENTOS ---")
         for evento in self.lista_eventos:
             print(evento)
+            
+    def deletar_evento(self, id_evento):
+        for evento in self.lista_eventos:
+            if evento.id == id_evento:
+                self.lista_eventos.remove(evento)
+                print(f"🗑 Evento '{evento.nome}' removido com sucesso!\n")
+                return
+        print("❌ Evento nao encontrado.\n")
