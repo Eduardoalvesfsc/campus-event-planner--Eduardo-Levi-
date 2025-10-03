@@ -9,12 +9,14 @@ class Menu:
 
     def _display_menu(self):
         menu_options = [
-            "1. Adicionar Evento",
-            "2. Listar Eventos",
-            "3. Filtrar Eventos por Categoria",
-            "4. Marcar Evento como Participado",
-            "5. Gerar Relatório",
-            "0. Sair"
+            " 1. Adicionar Evento",
+            " 2. Listar Eventos",
+            " 3. Filtrar Eventos por Categoria",
+            " 4. Marcar Evento como Participado",
+            " 5. Gerar Relatório",
+            " 6. Procurar Evento por Nome",
+            " 7. Deletar Evento por ID",
+            " 0. Sair"
         ]
 
         print(self._display_title(" Planejador ") + "\n")
@@ -46,7 +48,7 @@ Developed by: Eduardo and Levi
     def __cadastrar_evento(self, planejador: PlanejadorEventos):
         print(self._display_title(" Adicionar Evento ") + "\n")
         nome = input("Nome do Evento: ")
-        data = input("Data (AAAA-MM-DD): ")
+        data = input("Data (DD/MM/AAAA): ")
         local = input("Local: ")
         categoria = input("Categoria: ")
         planejador.adicionar_evento(nome, data, local, categoria)
@@ -55,9 +57,42 @@ Developed by: Eduardo and Levi
         print(self._display_title(" Listar Eventos ") + "\n")
         planejador.listar_eventos()
         
+    def __deletar_evento(self, planejador: PlanejadorEventos):
+        print(self._display_title(" Deletar Evento ") + "\n")
+        try:
+            id_evento = int(input("Digite o ID do evento para deletar: "))
+            planejador.deletar_evento(id_evento)
+        except ValueError:
+            print("ID invalido, digite um numero.")
+            
+    def __procurar_evento(self, planejador: PlanejadorEventos):
+        print(self._display_title("Procurar Evento por Nome"))
+        nome = input("Digite o nome do evento para procurar: ")
+        planejador.procurar_evento_por_nome(nome)
+            
+    def __filtrar_eventos(self, planejador: PlanejadorEventos):
+        print(self._display_title(" Filtrar Eventos ") + "\n")
+        categoria = input("Digite a categoria para filtrar: ")
+        planejador.filtrar_eventos_por_categoria(categoria)
+        
+    def __marcar_participado(self, planejador: PlanejadorEventos):
+        print(self._display_title(" Marcar Evento como Participado ") + "\n")
+        try:
+            id_evento = int(input("Digite o ID do evento para marcar como participado: "))
+            planejador.marcar_evento_como_participado(id_evento)
+        except ValueError:
+            print("ID invalido, digite um numero.")
+            
+    def __gerar_relatorio(self, planejador: PlanejadorEventos):
+        print(self._display_title(" Relatório dos Eventos ") + "\n")
+        planejador.gerar_relatorio()    
+    
     def iniciar(self):
         planejador = PlanejadorEventos()
         self._display_header()
+        planejador.adicionar_evento("Campus Party", "22/12/2026", "Arena BRB", "Tecnologia")
+        planejador.adicionar_evento("BB Week", "22/12/2026", "Arena BRB", "Tecnologia")
+        planejador.adicionar_evento("Capital Motoweek", "22/12/2026", "Arena BRB", "Cultura")
         
         while True:
             self._display_menu()
@@ -67,6 +102,16 @@ Developed by: Eduardo and Levi
                 self.__cadastrar_evento(planejador)
             elif escolha == 2:
                 self.__listar_eventos(planejador)
+            elif escolha == 3:
+                self.__filtrar_eventos(planejador)
+            elif escolha == 4:
+                self.__marcar_participado(planejador)
+            elif escolha == 5:
+                self.__gerar_relatorio(planejador)
+            elif escolha == 6:
+                self.__procurar_evento(planejador)
+            elif escolha == 7:
+                self.__deletar_evento(planejador)
             elif escolha == 0:
                 print("Saindo do Planejador de Eventos. Até logo!")
                 break

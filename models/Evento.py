@@ -8,4 +8,12 @@ class Evento:
         self.participado = False
 
     def __str__(self):
-        return f"ID: {self.id} | Nome: {self.nome} | Data: {self.data} | Local: {self.local} | Categoria: {self.categoria} | Participado: {self.participado}"
+        info = (
+            f" ▸ ID: {self.id}\n"
+            f" ▸ Nome: {self.nome}\n"
+            f" ▸ Data: {self.data}\n"
+            f" ▸ Local: {self.local}\n"
+            f" ▸ Categoria: {self.categoria}\n"
+            f" ▸ Participado: {'Sim' if self.participado else 'Não'}"
+        )
+        return f"{info}\n"
